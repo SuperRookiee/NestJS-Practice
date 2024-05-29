@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppController } from './app.controller';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
-import { AppService } from './app.service';
+import { AnimalsModule } from './animals/animals.module';
 import { CatModule } from './cat/cat.module';
+import { DogModule } from './dog/dog.module';
 
 const options: TypeOrmModuleOptions = {
   type: 'mariadb',
@@ -14,7 +14,7 @@ const options: TypeOrmModuleOptions = {
   database: 'Animals',
   entities: [__dirname + '/**/*.entity.js'],
   synchronize: true,
-  logging: false,
+  logging: true,
 };
 
 @Module({
@@ -22,9 +22,9 @@ const options: TypeOrmModuleOptions = {
     TypeOrmModule.forRoot({
       ...options,
     }),
+    AnimalsModule,
     CatModule,
+    DogModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}
