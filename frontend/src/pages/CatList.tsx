@@ -1,6 +1,7 @@
 import { useState, useEffect, ChangeEvent } from 'react';
 import axios from 'axios';
 import { Cat } from '../interface/Cat';
+import { Link } from 'react-router-dom';
 
 const CatList = () => {
   const [cats, setCats] = useState<Cat[]>([]);
@@ -22,6 +23,7 @@ const CatList = () => {
 
   return (
     <div>
+      <Link to='/'>Home</Link>
       <h2>Cat List</h2>
       <input
         type="text"
@@ -29,11 +31,25 @@ const CatList = () => {
         value={searchTerm}
         onChange={handleSearchChange}
       />
-      <ul>
-        {filteredCats.map(cat => (
-          <li key={cat.id}>{cat.name} Breed: {cat.breed} Age: {cat.age}</li>
-        ))}
-      </ul>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Breed</th>
+            <th>Age</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredCats.map(cat => (
+            <tr key={cat.id}>
+              <td>{cat.name}</td>
+              <td>{cat.breed}</td>
+              <td>{cat.age}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
     </div>
   );
 };

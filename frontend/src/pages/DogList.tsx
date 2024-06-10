@@ -1,6 +1,7 @@
 import { useState, useEffect, ChangeEvent } from 'react';
 import axios from 'axios';
 import { Dog } from '../interface/Dog';
+import { Link } from 'react-router-dom';
 
 const DogList = () => {
   const [dogs, setDogs] = useState<Dog[]>([]);
@@ -22,6 +23,7 @@ const DogList = () => {
 
   return (
     <div>
+      <Link to='/'>Home</Link>
       <h2>Dog List</h2>
       <input
         type="text"
@@ -29,11 +31,25 @@ const DogList = () => {
         value={searchTerm}
         onChange={handleSearchChange}
       />
-      <ul>
-        {filteredDogs.map(dog => (
-          <li key={dog.id}>{dog.name} Breed: {dog.breed} Age: {dog.age}</li>
-        ))}
-      </ul>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Breed</th>
+            <th>Age</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredDogs.map(dog => (
+            <tr key={dog.id}>
+              <td>{dog.name}</td>
+              <td>{dog.breed}</td>
+              <td>{dog.age}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
     </div>
   );
 };
