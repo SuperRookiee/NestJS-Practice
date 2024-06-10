@@ -1,0 +1,29 @@
+CREATE TABLE `cat` (
+  `name` varchar(255) NOT NULL,
+  `breed` varchar(255) NOT NULL,
+  `age` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `countryId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_08774d1ce0d3b23add090f72229` (`countryId`),
+  CONSTRAINT `FK_08774d1ce0d3b23add090f72229` FOREIGN KEY (`countryId`) REFERENCES `country` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `country` (
+  `name` varchar(255) NOT NULL,
+  `continent` varchar(255) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `dog` (
+  `name` varchar(255) NOT NULL,
+  `breed` varchar(255) NOT NULL,
+  `age` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `countryId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_c34e2a7dd7038abd0bcb9653804` (`countryId`),
+  CONSTRAINT `FK_c34e2a7dd7038abd0bcb9653804` FOREIGN KEY (`countryId`) REFERENCES `country` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
