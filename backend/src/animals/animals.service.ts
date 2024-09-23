@@ -11,9 +11,9 @@ export class AnimalsService {
     @InjectRepository(Country)
     private readonly countryRepository: Repository<Country>,
     @InjectRepository(Cat)
-    private readonly catRepository: Repository<Cat | Country>,
+    private readonly catRepository: Repository<Cat>,
     @InjectRepository(Dog)
-    private readonly dogRepository: Repository<Dog | Country>,
+    private readonly dogRepository: Repository<Dog>,
   ) {}
 
   async getAllAnimals() {
